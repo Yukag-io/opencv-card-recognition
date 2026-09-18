@@ -9,9 +9,6 @@ __pycache__/
 venv/
 env/
 
-# 测试图片数据
-imge/
-
 # IDE
 .vscode/
 .idea/
