@@ -42,11 +42,14 @@ i_cnts = image.copy()
 cv2.drawContours(i_cnts, cnts, -1, (0,0,255), 3)
 cv_show("i_cnts",i_cnts)
 refCnts = myutils.sort_contours(cnts, method="left-to-right")[0]
+
 #初始化模板字典，用来存放数字图像
 digits = {}
 
 #遍历排序后的轮廓
 for (i, c) in enumerate(refCnts):
+    if cv2.contourArea(c) < 50:
+        continue
     (x, y, w, h) = cv2.boundingRect(c)
     roi = thresh[y:y+h, x:x+w]
 #尺寸归一化
